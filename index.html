@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* 1. الخطوط والمتغيرات */
         @font-face {
             font-family: 'OMEGLE';
             src: url('OMEGLE-Regular.ttf') format('truetype'); 
@@ -23,7 +22,6 @@
             --card-border: rgba(0, 210, 255, 0.12);
         }
 
-        /* 2. تنسيق الجسم والخلفية */
         body {
             margin: 0; padding: 0;
             background-color: var(--volt-dark);
@@ -46,7 +44,7 @@
             display: flex; flex-direction: column; align-items: center; width: 100%;
         }
 
-        /* 3. الهيدر واللوجو */
+        /* هيدر مع وميض قوي */
         .header { text-align: center; margin-bottom: 35px; animation: fadeInDown 1s ease-out; }
 
         .logo-wrapper {
@@ -68,7 +66,7 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        /* 4. قائمة الفروع (Menu Grid) */
+        /* قائمة الفروع */
         .menu-grid {
             width: 90%; max-width: 400px;
             display: flex; flex-direction: column; gap: 15px; margin-bottom: 45px;
@@ -87,7 +85,6 @@
         .card-info strong { font-family: 'OMEGLE', sans-serif; font-size: 1rem; font-weight: normal; display: block; margin-bottom: 2px; }
         .card-info small { font-family: 'Segoe UI', sans-serif; font-weight: 300; font-size: 0.7rem; color: #94a3b8; }
 
-        /* الأزرار */
         .actions { display: flex; gap: 12px; }
         .btn-group { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; }
 
@@ -108,7 +105,9 @@
             transform: scale(0.9);
         }
 
-        /* 5. السوشيال ميديا */
+        .coming-soon { opacity: 0.3; border-style: dashed; }
+
+        /* حاوية الأيقونات السفلية */
         .social-container {
             display: flex; gap: 30px; justify-content: center; margin-bottom: 40px;
             animation: fadeInUp 0.8s ease-out 0.6s backwards;
@@ -126,14 +125,21 @@
             font-size: 1.3rem; transition: 0.3s; color: white;
         }
 
-        /* 6. الفوتر والأنيميشن */
+        .social-link:active .social-icon { 
+            border-color: var(--volt-blue); 
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+            transform: translateY(-3px); 
+        }
+
         .footer { text-align: center; color: #475569; font-family: 'OMEGLE', sans-serif; font-size: 0.75rem; padding-bottom: 20px; }
         .footer a { color: var(--volt-blue); text-decoration: none; }
 
+        /* Animations */
         @keyframes pulseGlow {
             0%, 100% { box-shadow: 0 0 15px rgba(0, 210, 255, 0.3); border-color: rgba(0, 210, 255, 0.4); }
             50% { box-shadow: 0 0 35px rgba(0, 210, 255, 0.7); border-color: rgba(0, 210, 255, 0.8); }
         }
+
         @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
@@ -143,14 +149,12 @@
     <canvas id="spark-canvas"></canvas>
 
     <div class="content-wrapper">
-        
         <div class="header">
             <div class="logo-wrapper"><img src="logo.png" alt="Volt Logo"></div>
             <h1>VOLT CAFÉ</h1>
         </div>
 
         <div class="menu-grid">
-            
             <div class="menu-card" style="animation-delay: 0.2s;">
                 <div class="card-info">
                     <strong>فرع مصيف - بلطيم</strong>
@@ -174,7 +178,7 @@
                     <small>Kafr El Sheikh Branch</small>
                 </div>
                 <div class="actions">
-                    <a href="#" target="_blank" class="btn-group">
+                    <a href="######" target="_blank" class="btn-group">
                         <div class="action-btn"><i class="fas fa-location-dot"></i></div>
                         <span class="btn-label">الموقع</span>
                     </a>
@@ -185,23 +189,13 @@
                 </div>
             </div>
 
-            <div class="menu-card" style="animation-delay: 0.4s;">
+            <div class="menu-card coming-soon" style="animation-delay: 0.4s;">
                 <div class="card-info">
-                    <strong>فرع لالا لاند</strong>
-                    <small>La La Land Branch</small>
+                    <strong>فرع جديد</strong>
+                    <small>Coming Soon ..</small>
                 </div>
-                <div class="actions">
-                    <a href="#" target="_blank" class="btn-group">
-                        <div class="action-btn"><i class="fas fa-location-dot"></i></div>
-                        <span class="btn-label">الموقع</span>
-                    </a>
-                    <a href="#" target="_blank" class="btn-group">
-                        <div class="action-btn"><i class="fas fa-utensils"></i></div>
-                        <span class="btn-label">المنيو</span>
-                    </a>
-                </div>
+                <div style="color: #475569; padding-left: 10px;"><i class="fas fa-hourglass-half"></i></div>
             </div>
-
         </div>
 
         <div class="social-container">
@@ -210,9 +204,8 @@
                 <span>Facebook</span>
             </a>
             
-            <a href="#" class="social-link"> 
-                <div class="social-icon"><i class="fas fa-info"></i></div>
-                <span>About Volt</span>
+            <a href="#" class="social-link"> <div class="social-icon"><i class="fas fa-info"></i></div>
+                <span>About Volt Café</span>
             </a>
 
             <a href="https://www.instagram.com/voltcafe.eg" class="social-link" target="_blank">
@@ -222,7 +215,7 @@
         </div>
 
         <div class="footer">
-            <div>VOLT CAFE © 2026</div>
+            <div>VOLT CAFE © 2023</div>
             <div style="margin-top: 5px;">BY <a href="https://www.instagram.com/moyehiia" target="_blank">MOYEHIIA</a></div>
         </div>
     </div>
