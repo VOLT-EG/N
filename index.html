@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Volt Café | Social & Menu</title>
+    
+    <link rel="icon" type="image/png" href="logo.png">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @font-face {
@@ -16,7 +19,7 @@
         :root {
             --volt-blue: #00d2ff;
             --volt-dark: #020617;
-            --neon-glow: 0 0 25px rgba(0, 210, 255, 0.4);
+            --neon-glow: 0 0 15px rgba(0, 210, 255, 0.3);
         }
 
         body {
@@ -34,9 +37,9 @@
             padding: 30px 0;
             overflow-x: hidden;
             position: relative;
+            -webkit-font-smoothing: antialiased; /* تحسين نعومة الخط في المتصفحات */
         }
 
-        /* حاوية الخلفية المتحركة */
         #spark-canvas {
             position: fixed;
             top: 0;
@@ -49,7 +52,7 @@
 
         .content-wrapper {
             position: relative;
-            z-index: 1; /* لضمان ظهور المحتوى فوق الشرارات */
+            z-index: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -63,68 +66,80 @@
         }
 
         .logo-wrapper {
-            width: 85px;
-            height: 85px;
+            width: 80px;
+            height: 80px;
             margin: 0 auto;
             border-radius: 50%;
-            border: 2px solid var(--volt-blue);
+            border: 1px solid rgba(0, 210, 255, 0.4); /* إطار أرق */
             box-shadow: var(--neon-glow);
             display: flex;
             justify-content: center;
             align-items: center;
-            background: rgba(2, 6, 23, 0.6);
+            background: rgba(2, 6, 23, 0.4);
             backdrop-filter: blur(5px);
-            animation: pulseGlow 3s infinite ease-in-out;
+            animation: pulseGlow 4s infinite ease-in-out;
         }
 
-        .logo-wrapper img { width: 75%; }
+        .logo-wrapper img { width: 70%; }
 
         h1 {
             font-family: 'OMEGLE', sans-serif;
-            font-size: 2.4rem;
+            font-size: 2.1rem;
+            font-weight: normal; /* جعل الخط أنحف */
             letter-spacing: 4px;
             margin: 15px 0 0;
-            background: linear-gradient(to bottom, #ffffff, var(--volt-blue));
+            background: linear-gradient(to bottom, #ffffff, #b4edff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 5px 15px rgba(0,210,255,0.2));
         }
 
         .menu-grid {
-            width: 90%;
-            max-width: 400px;
+            width: 88%;
+            max-width: 380px;
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 16px;
             margin-bottom: 35px;
             animation: fadeInUp 0.8s ease-out 0.2s backwards;
         }
 
         .menu-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 210, 255, 0.2);
-            border-radius: 16px;
-            padding: 20px 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 210, 255, 0.12); /* إطار أرق */
+            border-radius: 12px;
+            padding: 16px 22px;
             text-decoration: none;
             color: white;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             backdrop-filter: blur(10px);
         }
 
-        .menu-card:active {
-            transform: scale(0.96);
-            background: rgba(0, 210, 255, 0.1);
-            border-color: var(--volt-blue);
+        .menu-card strong { 
+            font-family: 'OMEGLE', sans-serif; 
+            font-size: 1.05rem; 
+            font-weight: normal; /* خط أنحف */
+            letter-spacing: 1px;
         }
 
-        .menu-card strong { font-family: 'OMEGLE', sans-serif; font-size: 1.15rem; }
+        .menu-card small {
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 300; /* خط رفيع جداً للإنجليزي */
+            font-size: 0.7rem;
+            color: #94a3b8;
+            opacity: 0.8;
+        }
+
+        .menu-card:active {
+            transform: scale(0.98);
+            background: rgba(0, 210, 255, 0.05);
+        }
 
         .social-container {
             display: flex;
-            gap: 40px;
+            gap: 35px;
             justify-content: center;
             margin-bottom: 40px;
             animation: fadeInUp 0.8s ease-out 0.4s backwards;
@@ -132,8 +147,9 @@
 
         .social-link {
             text-decoration: none;
-            color: white;
-            font-size: 0.8rem;
+            color: #cbd5e1;
+            font-size: 0.75rem;
+            font-weight: 300;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -141,37 +157,38 @@
         }
 
         .social-icon {
-            width: 55px;
-            height: 55px;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 210, 255, 0.25);
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 210, 255, 0.15);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             transition: 0.3s;
+            color: white;
         }
 
         .social-link:active .social-icon {
-            background: var(--volt-blue);
-            color: var(--volt-dark);
-            box-shadow: 0 0 15px var(--volt-blue);
+            border-color: var(--volt-blue);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.15);
         }
 
         .footer { 
             margin-top: auto;
             text-align: center;
-            color: #64748b; 
+            color: #475569; 
             font-family: 'OMEGLE', sans-serif;
+            font-weight: normal;
             padding-bottom: 20px;
         }
 
-        .footer a { color: var(--volt-blue); text-decoration: none; font-weight: bold; }
+        .footer a { color: var(--volt-blue); text-decoration: none; font-weight: normal; opacity: 0.8; }
 
         @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 20px rgba(0, 210, 255, 0.4); }
-            50% { box-shadow: 0 0 35px rgba(0, 210, 255, 0.7); transform: scale(1.02); }
+            0%, 100% { box-shadow: 0 0 15px rgba(0, 210, 255, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(0, 210, 255, 0.5); }
         }
 
         @keyframes fadeInUp {
@@ -201,16 +218,16 @@
             <a href="https://volt.tiiny.site/MU.png" class="menu-card">
                 <div>
                     <strong>فرع مصيف - بلطيم</strong><br>
-                    <small style="font-family: sans-serif; font-size: 0.75rem; color: #94a3b8;">Baltim Resort Branch</small>
+                    <small>Baltim Resort Branch</small>
                 </div>
-                <i class="fas fa-location-dot" style="color: var(--volt-blue); font-size: 1.2rem;"></i>
+                <i class="fas fa-location-dot" style="color: var(--volt-blue); font-size: 1.1rem; opacity: 0.9;"></i>
             </a>
             <a href="https://volt-eg.github.io/M/MU-KFS.png" class="menu-card">
                 <div>
                     <strong>فرع نادي ماتريكس - كفرالشيخ</strong><br>
-                    <small style="font-family: sans-serif; font-size: 0.75rem; color: #94a3b8;">Matrix Club Branch</small>
+                    <small>Matrix Club Branch</small>
                 </div>
-                <i class="fas fa-bolt" style="color: var(--volt-blue); font-size: 1.2rem;"></i>
+                <i class="fas fa-bolt" style="color: var(--volt-blue); font-size: 1.1rem; opacity: 0.9;"></i>
             </a>
         </div>
 
@@ -236,9 +253,8 @@
     <script>
         const canvas = document.getElementById('spark-canvas');
         const ctx = canvas.getContext('2d');
-
         let particles = [];
-        const particleCount = 40;
+        const particleCount = 35;
 
         function resize() {
             canvas.width = window.innerWidth;
@@ -249,17 +265,15 @@
         resize();
 
         class Spark {
-            constructor() {
-                this.init();
-            }
+            constructor() { this.init(); }
             init() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 1.5 + 0.5;
-                this.speedX = (Math.random() - 0.5) * 0.5;
-                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 1.2 + 0.3;
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.speedY = (Math.random() - 0.5) * 0.4;
                 this.opacity = Math.random();
-                this.fadeSpeed = Math.random() * 0.02 + 0.005;
+                this.fadeSpeed = Math.random() * 0.01 + 0.005;
             }
             update() {
                 this.x += this.speedX;
@@ -269,28 +283,19 @@
             }
             draw() {
                 ctx.fillStyle = `rgba(0, 210, 255, ${this.opacity})`;
-                ctx.shadowBlur = 10;
-                ctx.shadowColor = '#00d2ff';
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
-                ctx.shadowBlur = 0;
             }
         }
 
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Spark());
-        }
+        for (let i = 0; i < particleCount; i++) { particles.push(new Spark()); }
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
+            particles.forEach(p => { p.update(); p.draw(); });
             requestAnimationFrame(animate);
         }
-
         animate();
     </script>
 </body>
