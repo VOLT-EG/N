@@ -8,7 +8,7 @@
         /* تعريف الخط - تأكد من رفع ملف الخط بنفس الاسم */
         @font-face {
             font-family: 'OMEGLE';
-            src: url('OMEGLE-Regular.ttf') format('truetype'); /* أو .otf حسب نوع الملف عندك */
+            src: url('OMEGLE-Regular.ttf') format('truetype'); 
             font-weight: normal;
             font-style: normal;
         }
@@ -25,7 +25,6 @@
             background-color: var(--volt-dark);
             background-image: radial-gradient(circle at top, #101a30 0%, #050a14 100%);
             color: #ffffff;
-            /* جعل الخط الافتراضي Omegle وفي حال لم يعمل يستخدم Segoe UI */
             font-family: 'OMEGLE', 'Segoe UI', Roboto, sans-serif;
             display: flex;
             flex-direction: column;
@@ -57,7 +56,7 @@
 
         h1 {
             font-family: 'OMEGLE', sans-serif;
-            font-size: 3rem; /* تكبير الخط لأنه غالباً خطوط العناوين تكون أصغر */
+            font-size: 3rem;
             letter-spacing: 5px;
             margin: 15px 0 5px;
             background: linear-gradient(to bottom, #ffffff, var(--volt-blue));
@@ -134,13 +133,34 @@
 
         .social-link:hover .social-icon { box-shadow: var(--neon-glow); transform: translateY(-3px); }
 
+        /* تنسيق قسم الحقوق المطور */
         .footer { 
             margin-top: auto; 
-            padding: 30px; 
-            font-size: 0.8rem; 
+            padding: 20px 0 30px; 
+            text-align: center;
             color: #475569; 
             font-family: 'OMEGLE', sans-serif;
+        }
+
+        .footer .brand-copyright {
+            font-size: 0.8rem;
             letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .footer .designer-credit {
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+
+        .footer a {
+            color: var(--volt-blue);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer a:hover {
+            text-shadow: 0 0 5px var(--volt-blue);
         }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -157,11 +177,11 @@
 
     <div class="menu-grid">
         <a href="https://volt.tiiny.site/MU.png" class="menu-card">
-            <div><strong>فرع  مصيف - بلطيم</strong><br><small>Baltim Resort Branch</small></div>
+            <div><strong>فرع مصيف - بلطيم</strong><br><small>Baltim Resort Branch</small></div>
             <span>📍</span>
         </a>
         <a href="https://volt-eg.github.io/M/MU-KFS.png" class="menu-card">
-            <div><strong>فرع  نادي ماتريكس - كفر الشيخ</strong><br><small>Kafr El Sheikh Branch</small></div>
+            <div><strong>فرع نادي ماتريكس - كفر الشيخ</strong><br><small>Kafr El Sheikh Branch</small></div>
             <span>⚡</span>
         </a>
     </div>
@@ -177,7 +197,12 @@
         </a>
     </div>
 
-    <div class="footer">VOLT CAFE - QUALITY & ENERGY © 2026</div>
+    <div class="footer">
+        <div class="brand-copyright">VOLT CAFE - QUALITY & ENERGY © 2026</div>
+        <div class="designer-credit">
+            BY <a href="https://www.instagram.com/moyehiia?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">MOYEHIIA</a>
+        </div>
+    </div>
 
 </body>
 </html>
