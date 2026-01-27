@@ -9,14 +9,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- 1. تعريف الخطوط --- */
+        /* 1. الخطوط والمتغيرات */
         @font-face {
             font-family: 'OMEGLE';
             src: url('OMEGLE-Regular.ttf') format('truetype'); 
             font-weight: normal; font-style: normal;
         }
 
-        /* --- 2. المتغيرات الأساسية (الألوان) --- */
         :root {
             --volt-blue: #00d2ff;
             --volt-dark: #020617;
@@ -24,7 +23,7 @@
             --card-border: rgba(0, 210, 255, 0.12);
         }
 
-        /* --- 3. تنسيق هيكل الصفحة --- */
+        /* 2. تنسيق الجسم والخلفية */
         body {
             margin: 0; padding: 0;
             background-color: var(--volt-dark);
@@ -37,7 +36,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- 4. تأثير الخلفية (الشرارات) --- */
         #spark-canvas {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: 0; pointer-events: none;
@@ -48,7 +46,7 @@
             display: flex; flex-direction: column; align-items: center; width: 100%;
         }
 
-        /* --- 5. الهيدر واللوجو --- */
+        /* 3. الهيدر واللوجو */
         .header { text-align: center; margin-bottom: 35px; animation: fadeInDown 1s ease-out; }
 
         .logo-wrapper {
@@ -70,7 +68,7 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        /* --- 6. شبكة الفروع (Cards) --- */
+        /* 4. قائمة الفروع (Menu Grid) */
         .menu-grid {
             width: 90%; max-width: 400px;
             display: flex; flex-direction: column; gap: 15px; margin-bottom: 45px;
@@ -89,7 +87,7 @@
         .card-info strong { font-family: 'OMEGLE', sans-serif; font-size: 1rem; font-weight: normal; display: block; margin-bottom: 2px; }
         .card-info small { font-family: 'Segoe UI', sans-serif; font-weight: 300; font-size: 0.7rem; color: #94a3b8; }
 
-        /* --- 7. الأزرار التفاعلية --- */
+        /* الأزرار */
         .actions { display: flex; gap: 12px; }
         .btn-group { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; }
 
@@ -110,9 +108,7 @@
             transform: scale(0.9);
         }
 
-        .coming-soon { opacity: 0.3; border-style: dashed; }
-
-        /* --- 8. السوشيال ميديا --- */
+        /* 5. السوشيال ميديا */
         .social-container {
             display: flex; gap: 30px; justify-content: center; margin-bottom: 40px;
             animation: fadeInUp 0.8s ease-out 0.6s backwards;
@@ -130,17 +126,10 @@
             font-size: 1.3rem; transition: 0.3s; color: white;
         }
 
-        .social-link:active .social-icon { 
-            border-color: var(--volt-blue); 
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
-            transform: translateY(-3px); 
-        }
-
-        /* --- 9. الحقوق --- */
+        /* 6. الفوتر والأنيميشن */
         .footer { text-align: center; color: #475569; font-family: 'OMEGLE', sans-serif; font-size: 0.75rem; padding-bottom: 20px; }
         .footer a { color: var(--volt-blue); text-decoration: none; }
 
-        /* --- 10. الأنيميشن --- */
         @keyframes pulseGlow {
             0%, 100% { box-shadow: 0 0 15px rgba(0, 210, 255, 0.3); border-color: rgba(0, 210, 255, 0.4); }
             50% { box-shadow: 0 0 35px rgba(0, 210, 255, 0.7); border-color: rgba(0, 210, 255, 0.8); }
@@ -185,7 +174,7 @@
                     <small>Kafr El Sheikh Branch</small>
                 </div>
                 <div class="actions">
-                    <a href="######" target="_blank" class="btn-group">
+                    <a href="#" target="_blank" class="btn-group">
                         <div class="action-btn"><i class="fas fa-location-dot"></i></div>
                         <span class="btn-label">الموقع</span>
                     </a>
@@ -199,7 +188,7 @@
             <div class="menu-card" style="animation-delay: 0.4s;">
                 <div class="card-info">
                     <strong>فرع لالا لاند</strong>
-                    <small>La La Land Branch (Soon)</small>
+                    <small>La La Land Branch</small>
                 </div>
                 <div class="actions">
                     <a href="#" target="_blank" class="btn-group">
@@ -213,13 +202,6 @@
                 </div>
             </div>
 
-            <div class="menu-card coming-soon" style="animation-delay: 0.5s;">
-                <div class="card-info">
-                    <strong>فرع جديد</strong>
-                    <small>Coming Soon ..</small>
-                </div>
-                <div style="color: #475569; padding-left: 10px;"><i class="fas fa-hourglass-half"></i></div>
-            </div>
         </div>
 
         <div class="social-container">
