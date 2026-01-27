@@ -59,7 +59,6 @@
             width: 100%;
         }
 
-        /* تحسين الهيدر */
         .header { 
             text-align: center; 
             margin-bottom: 40px;
@@ -78,7 +77,6 @@
             align-items: center;
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(8px);
-            transition: 0.5s;
         }
 
         .logo-wrapper img { width: 68%; filter: drop-shadow(0 0 5px var(--volt-blue)); }
@@ -94,24 +92,21 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* خط ديكوري تحت العنوان */
         .title-line {
-            width: 40px;
+            width: 45px;
             height: 2px;
             background: var(--volt-blue);
             margin: 0 auto;
             border-radius: 2px;
             box-shadow: 0 0 10px var(--volt-blue);
-            animation: expandLine 1.2s ease-out forwards;
         }
 
-        /* تحسين أزرار المنيو */
         .menu-grid {
             width: 85%;
             max-width: 370px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 18px;
             margin-bottom: 45px;
         }
 
@@ -130,14 +125,18 @@
             animation: fadeInUp 0.8s ease-out backwards;
         }
 
-        .menu-card:nth-child(1) { animation-delay: 0.3s; }
-        .menu-card:nth-child(2) { animation-delay: 0.5s; }
+        /* تنسيق خاص للفرع القادم */
+        .coming-soon {
+            opacity: 0.6;
+            border-style: dashed;
+            cursor: default;
+            background: rgba(255, 255, 255, 0.01);
+        }
 
-        .menu-card:active {
+        .menu-card:active:not(.coming-soon) {
             transform: scale(0.95);
             background: rgba(0, 210, 255, 0.08);
             border-color: var(--volt-blue);
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.15);
         }
 
         .menu-card strong { 
@@ -145,7 +144,6 @@
             font-size: 1.1rem; 
             font-weight: normal;
             display: block;
-            margin-bottom: 3px;
         }
 
         .menu-card small {
@@ -153,24 +151,20 @@
             font-weight: 300;
             font-size: 0.75rem;
             color: #94a3b8;
-            letter-spacing: 0.5px;
         }
 
-        /* أيقونة البرق بجانب النصوص */
         .card-icon {
             font-size: 1.2rem;
             color: var(--volt-blue);
             opacity: 0.8;
-            transition: 0.3s;
         }
 
-        /* تحسين أيقونات التواصل */
         .social-container {
             display: flex;
             gap: 30px;
             justify-content: center;
             margin-bottom: 50px;
-            animation: fadeInUp 0.8s ease-out 0.7s backwards;
+            animation: fadeInUp 0.8s ease-out 0.8s backwards;
         }
 
         .social-link {
@@ -181,13 +175,12 @@
             flex-direction: column;
             align-items: center;
             gap: 10px;
-            transition: 0.3s;
         }
 
         .social-icon {
             width: 52px;
             height: 52px;
-            border-radius: 50%; /* أيقونات دائرية لكسر حدة المربعات */
+            border-radius: 50%;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
@@ -202,7 +195,6 @@
             transform: translateY(-5px);
             border-color: var(--volt-blue);
             color: var(--volt-blue);
-            box-shadow: 0 5px 15px rgba(0, 210, 255, 0.2);
         }
 
         .footer { 
@@ -212,20 +204,12 @@
             font-family: 'OMEGLE', sans-serif;
             font-size: 0.8rem;
             padding-bottom: 20px;
-            letter-spacing: 1px;
         }
 
-        .footer a { color: var(--volt-blue); text-decoration: none; opacity: 0.7; }
+        .footer a { color: var(--volt-blue); text-decoration: none; }
 
-        /* Animations */
-        @keyframes expandLine { from { width: 0; opacity: 0; } to { width: 45px; opacity: 1; } }
         @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        
-        @keyframes pulseGlow {
-            0%, 100% { border-color: rgba(0, 210, 255, 0.3); box-shadow: 0 0 15px rgba(0, 210, 255, 0.2); }
-            50% { border-color: rgba(0, 210, 255, 0.6); box-shadow: 0 0 25px rgba(0, 210, 255, 0.4); }
-        }
     </style>
 </head>
 <body>
@@ -242,7 +226,7 @@
         </div>
 
         <div class="menu-grid">
-            <a href="https://volt.tiiny.site/MU.png" class="menu-card">
+            <a href="https://volt.tiiny.site/MU.png" class="menu-card" style="animation-delay: 0.2s;">
                 <div>
                     <strong>فرع مصيف - بلطيم</strong>
                     <small>Baltim Resort Branch</small>
@@ -250,13 +234,21 @@
                 <div class="card-icon"><i class="fas fa-location-dot"></i></div>
             </a>
             
-            <a href="https://volt-eg.github.io/M/MU-KFS.png" class="menu-card">
+            <a href="https://volt-eg.github.io/M/MU-KFS.png" class="menu-card" style="animation-delay: 0.4s;">
                 <div>
                     <strong>فرع نادي ماتريكس - كفر الشيخ</strong>
                     <small>Kafr El Sheikh Branch</small>
                 </div>
                 <div class="card-icon"><i class="fas fa-bolt"></i></div>
             </a>
+
+            <div class="menu-card coming-soon" style="animation-delay: 0.6s;">
+                <div>
+                    <strong>فرع جديد</strong>
+                    <small>قريباً .. Coming Soon</small>
+                </div>
+                <div class="card-icon"><i class="fas fa-hourglass-half"></i></div>
+            </div>
         </div>
 
         <div class="social-container">
@@ -282,7 +274,7 @@
         const canvas = document.getElementById('spark-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        const particleCount = 40;
+        const particleCount = 35;
 
         function resize() {
             canvas.width = window.innerWidth;
@@ -297,7 +289,7 @@
             init() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 1.4 + 0.2;
+                this.size = Math.random() * 1.3 + 0.2;
                 this.speedX = (Math.random() - 0.5) * 0.3;
                 this.speedY = (Math.random() - 0.5) * 0.3;
                 this.opacity = Math.random();
