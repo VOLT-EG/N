@@ -44,33 +44,32 @@
             display: flex; flex-direction: column; align-items: center; width: 100%;
         }
 
-        /* اللوجو بحجم أكبر ووميض أقوى */
+        /* هيدر مع وميض قوي */
         .header { text-align: center; margin-bottom: 35px; animation: fadeInDown 1s ease-out; }
 
         .logo-wrapper {
-            width: 95px; height: 95px; /* تكبير اللوجو */
+            width: 95px; height: 95px;
             margin: 0 auto; border-radius: 50%;
             border: 2px solid rgba(0, 210, 255, 0.4);
             display: flex; justify-content: center; align-items: center;
             background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(8px);
-            animation: pulseGlow 2s infinite ease-in-out; /* وميض أسرع وأوضح */
+            animation: pulseGlow 2s infinite ease-in-out;
         }
 
         .logo-wrapper img { width: 70%; filter: drop-shadow(0 0 8px var(--volt-blue)); }
 
         h1 {
             font-family: 'OMEGLE', sans-serif; 
-            font-size: 1.9rem;
-            font-weight: 100;
-            letter-spacing: 6px;
-            margin: 15px 0 0;
+            font-size: 1.9rem; font-weight: 100;
+            letter-spacing: 6px; margin: 15px 0 0;
             background: linear-gradient(180deg, #fff 30%, #a2e9ff 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
+        /* قائمة الفروع */
         .menu-grid {
             width: 90%; max-width: 400px;
-            display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;
+            display: flex; flex-direction: column; gap: 15px; margin-bottom: 45px;
         }
 
         .menu-card {
@@ -85,22 +84,6 @@
 
         .card-info strong { font-family: 'OMEGLE', sans-serif; font-size: 1rem; font-weight: normal; display: block; margin-bottom: 2px; }
         .card-info small { font-family: 'Segoe UI', sans-serif; font-weight: 300; font-size: 0.7rem; color: #94a3b8; }
-
-        /* قسم "عن" المستقل */
-        .info-section {
-            width: 90%; max-width: 400px;
-            margin-bottom: 35px;
-            animation: fadeInUp 0.8s ease-out 0.5s backwards;
-        }
-
-        .info-card {
-            background: rgba(0, 210, 255, 0.04);
-            border: 1px solid rgba(0, 210, 255, 0.2);
-            border-radius: 16px;
-            padding: 14px 18px;
-            display: flex; align-items: center; justify-content: space-between;
-            backdrop-filter: blur(10px);
-        }
 
         .actions { display: flex; gap: 12px; }
         .btn-group { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; }
@@ -124,27 +107,34 @@
 
         .coming-soon { opacity: 0.3; border-style: dashed; }
 
+        /* حاوية الأيقونات السفلية */
         .social-container {
-            display: flex; gap: 35px; justify-content: center; margin-bottom: 35px;
-            animation: fadeInUp 0.8s ease-out 0.7s backwards;
+            display: flex; gap: 30px; justify-content: center; margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
         }
 
         .social-link {
             text-decoration: none; color: #cbd5e1; font-size: 0.7rem;
-            display: flex; flex-direction: column; align-items: center; gap: 6px;
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
         }
 
         .social-icon {
-            width: 46px; height: 46px; border-radius: 12px;
-            background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(0, 210, 255, 0.1);
+            width: 48px; height: 48px; border-radius: 14px;
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 210, 255, 0.15);
             display: flex; justify-content: center; align-items: center;
-            font-size: 1.2rem; transition: 0.3s; color: white;
+            font-size: 1.3rem; transition: 0.3s; color: white;
+        }
+
+        .social-link:active .social-icon { 
+            border-color: var(--volt-blue); 
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+            transform: translateY(-3px); 
         }
 
         .footer { text-align: center; color: #475569; font-family: 'OMEGLE', sans-serif; font-size: 0.75rem; padding-bottom: 20px; }
         .footer a { color: var(--volt-blue); text-decoration: none; }
 
-        /* أنيميشن الوميض القوي */
+        /* Animations */
         @keyframes pulseGlow {
             0%, 100% { box-shadow: 0 0 15px rgba(0, 210, 255, 0.3); border-color: rgba(0, 210, 255, 0.4); }
             50% { box-shadow: 0 0 35px rgba(0, 210, 255, 0.7); border-color: rgba(0, 210, 255, 0.8); }
@@ -161,7 +151,7 @@
     <div class="content-wrapper">
         <div class="header">
             <div class="logo-wrapper"><img src="logo.png" alt="Volt Logo"></div>
-            <h1>VOLT MENU</h1>
+            <h1>VOLT Café/h1>
         </div>
 
         <div class="menu-grid">
@@ -208,26 +198,16 @@
             </div>
         </div>
 
-        <div class="info-section">
-            <div class="info-card">
-                <div class="card-info">
-                    <strong>عن</strong>
-                    <small>About Volt Café</small>
-                </div>
-                <div class="actions">
-                    <a href="#" class="btn-group">
-                        <div class="action-btn" style="border-color: var(--volt-blue);"><i class="fas fa-circle-info"></i></div>
-                        <span class="btn-label">التفاصيل</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
         <div class="social-container">
             <a href="https://www.facebook.com/VoltCafe.eg" class="social-link" target="_blank">
                 <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
                 <span>Facebook</span>
             </a>
+            
+            <a href="#" class="social-link"> <div class="social-icon"><i class="fas fa-info"></i></div>
+                <span>عن Volt</span>
+            </a>
+
             <a href="https://www.instagram.com/voltcafe.eg" class="social-link" target="_blank">
                 <div class="social-icon"><i class="fab fa-instagram"></i></div>
                 <span>Instagram</span>
@@ -244,11 +224,8 @@
         const canvas = document.getElementById('spark-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        const particleCount = 35;
-
         function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         window.addEventListener('resize', resize); resize();
-
         class Spark {
             constructor() { this.init(); }
             init() {
@@ -260,14 +237,8 @@
             update() { this.x += this.speedX; this.y += this.speedY; this.opacity -= this.fadeSpeed; if (this.opacity <= 0) this.init(); }
             draw() { ctx.fillStyle = `rgba(0, 210, 255, ${this.opacity})`; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
         }
-
-        for (let i = 0; i < particleCount; i++) { particles.push(new Spark()); }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => { p.update(); p.draw(); });
-            requestAnimationFrame(animate);
-        }
+        for (let i = 0; i < 35; i++) { particles.push(new Spark()); }
+        function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate); }
         animate();
     </script>
 </body>
