@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volt Café - Menu</title>
+    <title>Volt Café - اختر الفرع</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0b0f1a; /* خلفية داكنة جداً وفخمة */
+            background-color: #1a222d; /* لون الخلفية الداكن من الصورة */
             color: #ffffff;
             display: flex;
             flex-direction: column;
@@ -22,75 +22,80 @@
             text-align: center;
             width: 90%;
             max-width: 400px;
-            padding: 20px;
         }
 
-        .logo-text {
-            font-size: 3.5rem;
-            font-weight: 900;
-            letter-spacing: 5px;
-            margin-bottom: 10px;
-            color: #fbbf24; /* لون فولت الذهبي */
-            text-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+        /* تنسيق اللوجو الدائري */
+        .logo-container {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #ffffff; /* خلفية بيضاء تحت اللوجو إذا كان شفافاً */
+            border: 4px solid #4db8ff; /* الإطار السماوي المضيء */
+            box-shadow: 0 0 20px rgba(77, 184, 255, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
 
-        p {
-            font-size: 1.1rem;
+        .logo-container img {
+            width: 90%;
+            height: auto;
+        }
+
+        h2 {
+            font-weight: normal;
+            font-size: 1.2rem;
             margin-bottom: 40px;
-            color: #94a3b8;
+            color: #cfd8dc;
         }
 
         .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: block;
             width: 100%;
-            padding: 20px;
-            margin: 20px 0;
+            padding: 18px;
+            margin: 15px 0;
             text-decoration: none;
             color: #ffffff;
             font-weight: bold;
-            font-size: 1.2rem;
-            border-radius: 15px;
+            font-size: 1.1rem;
+            border-radius: 50px; /* أزرار دائرية الأطراف مثل الصورة */
+            border: 2px solid #ffffff; /* إطار أبيض حول الزر */
             transition: all 0.3s ease;
             box-sizing: border-box;
         }
 
-        /* زر فرع مصيف بلطيم */
+        /* زر فرع مصيف بلطيم - تدرج سماوي */
         .btn-baltim {
-            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-            box-shadow: 0 10px 20px rgba(2, 132, 199, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(to right, #00b4db, #0083b0);
         }
 
-        /* زر فرع كفر الشيخ */
+        /* زر فرع كفر الشيخ - تدرج بنفسجي */
         .btn-kfs {
-            background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
-            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(to right, #6a11cb, #2575fc);
         }
 
         .btn:hover {
-            transform: translateY(-5px) scale(1.02);
-            filter: brightness(1.1);
-        }
-
-        .btn:active {
-            transform: translateY(2px);
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
         }
 
         .footer {
-            margin-top: 50px;
-            font-size: 0.8rem;
-            color: #475569;
+            margin-top: 60px;
+            font-size: 0.85rem;
+            color: #94a3b8;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="logo-text">VOLT</div>
-        <p>اختر الفرع لعرض المنيو</p>
+        <div class="logo-container">
+            <img src="https://volt-eg.github.io/k/logo.png" alt="Volt Logo">
+        </div>
+
+        <h2>اختر الفرع لعرض المنيو</h2>
         
         <a href="https://volt.tiiny.site/MU.png" class="btn btn-baltim">
             📍 فرع مصيف بلطيم
@@ -101,7 +106,7 @@
         </a>
 
         <div class="footer">
-            &copy; 2026 Volt Café - Quality & Energy
+            © 2026 Volt Café - Quality & Energy
         </div>
     </div>
 
