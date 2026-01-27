@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Volt Café | Social & Menu</title>
     <style>
+        /* تعريف الخط - تأكد من رفع ملف الخط بنفس الاسم */
+        @font-face {
+            font-family: 'OMEGLE';
+            src: url('OMEGLE-Regular.ttf') format('truetype'); /* أو .otf حسب نوع الملف عندك */
+            font-weight: normal;
+            font-style: normal;
+        }
+
         :root {
             --volt-blue: #00d2ff;
             --volt-dark: #050a14;
@@ -17,7 +25,8 @@
             background-color: var(--volt-dark);
             background-image: radial-gradient(circle at top, #101a30 0%, #050a14 100%);
             color: #ffffff;
-            font-family: 'Segoe UI', Roboto, sans-serif;
+            /* جعل الخط الافتراضي Omegle وفي حال لم يعمل يستخدم Segoe UI */
+            font-family: 'OMEGLE', 'Segoe UI', Roboto, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -47,13 +56,14 @@
         .logo-wrapper img { width: 85%; }
 
         h1 {
-            font-size: 2rem;
-            letter-spacing: 3px;
+            font-family: 'OMEGLE', sans-serif;
+            font-size: 3rem; /* تكبير الخط لأنه غالباً خطوط العناوين تكون أصغر */
+            letter-spacing: 5px;
             margin: 15px 0 5px;
             background: linear-gradient(to bottom, #ffffff, var(--volt-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 900;
+            font-weight: normal;
         }
 
         .menu-grid {
@@ -78,6 +88,12 @@
             transition: 0.3s;
         }
 
+        .menu-card strong {
+            font-family: 'OMEGLE', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
         .menu-card:active { transform: scale(0.97); background: rgba(0, 210, 255, 0.1); }
 
         .social-container {
@@ -98,6 +114,11 @@
             transition: 0.3s;
         }
 
+        .social-link span {
+            font-family: 'OMEGLE', sans-serif;
+            letter-spacing: 1px;
+        }
+
         .social-icon {
             width: 50px;
             height: 50px;
@@ -113,7 +134,14 @@
 
         .social-link:hover .social-icon { box-shadow: var(--neon-glow); transform: translateY(-3px); }
 
-        .footer { margin-top: auto; padding: 30px; font-size: 0.7rem; color: #475569; }
+        .footer { 
+            margin-top: auto; 
+            padding: 30px; 
+            font-size: 0.8rem; 
+            color: #475569; 
+            font-family: 'OMEGLE', sans-serif;
+            letter-spacing: 2px;
+        }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
@@ -129,11 +157,11 @@
 
     <div class="menu-grid">
         <a href="https://volt.tiiny.site/MU.png" class="menu-card">
-            <div><strong>فرع مصيف - بلطيم</strong><br><small>View Menu</small></div>
+            <div><strong>فرع مصيف بلطيم</strong><br><small>View Menu</small></div>
             <span>📍</span>
         </a>
         <a href="https://volt-eg.github.io/M/MU-KFS.png" class="menu-card">
-            <div><strong>فرع نادي ماتريكس - كفر الشيخ</strong><br><small>Kafr El Sheikh Branch</small></div>
+            <div><strong>فرع نادي ماتريكس</strong><br><small>Kafr El Sheikh Branch</small></div>
             <span>⚡</span>
         </a>
     </div>
