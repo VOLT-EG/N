@@ -2,16 +2,108 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>اختر وجهتك</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volt Café - Menu</title>
     <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; gap: 20px; }
-        .btn { padding: 15px 30px; text-decoration: none; color: white; border-radius: 5px; font-weight: bold; }
-        .link1 { background-color: #24292e; }
-        .link2 { background-color: #007bff; }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0b0f1a; /* خلفية داكنة جداً وفخمة */
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            padding: 20px;
+        }
+
+        .logo-text {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+            color: #fbbf24; /* لون فولت الذهبي */
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            color: #94a3b8;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 20px;
+            margin: 20px 0;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        /* زر فرع مصيف بلطيم */
+        .btn-baltim {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            box-shadow: 0 10px 20px rgba(2, 132, 199, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* زر فرع كفر الشيخ */
+        .btn-kfs {
+            background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            filter: brightness(1.1);
+        }
+
+        .btn:active {
+            transform: translateY(2px);
+        }
+
+        .footer {
+            margin-top: 50px;
+            font-size: 0.8rem;
+            color: #475569;
+        }
     </style>
 </head>
 <body>
-    <a href="رابط-الصفحة-الأولى" class="btn link1">الخيار الأول</a>
-    <a href="رابط-الصفحة-الثانية" class="btn link2">الخيار الثاني</a>
+
+    <div class="container">
+        <div class="logo-text">VOLT</div>
+        <p>اختر الفرع لعرض المنيو</p>
+        
+        <a href="https://volt.tiiny.site/MU.png" class="btn btn-baltim">
+            📍 فرع مصيف بلطيم
+        </a>
+
+        <a href="https://volt-eg.github.io/M/MU-KFS.png" class="btn btn-kfs">
+            📍 فرع نادي ماتريكس
+        </a>
+
+        <div class="footer">
+            &copy; 2026 Volt Café - Quality & Energy
+        </div>
+    </div>
+
 </body>
 </html>
