@@ -44,12 +44,12 @@
             display: flex; flex-direction: column; align-items: center; width: 100%;
         }
 
-        .header { text-align: center; margin-bottom: 40px; animation: fadeInDown 1s ease-out; }
+        .header { text-align: center; margin-bottom: 35px; animation: fadeInDown 1s ease-out; }
 
         .logo-wrapper {
-            width: 82px; height: 82px; margin: 0 auto; border-radius: 50%;
+            width: 80px; height: 80px; margin: 0 auto; border-radius: 50%;
             border: 1px solid rgba(0, 210, 255, 0.3);
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.15);
             display: flex; justify-content: center; align-items: center;
             background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(8px);
         }
@@ -57,112 +57,76 @@
         .logo-wrapper img { width: 68%; filter: drop-shadow(0 0 5px var(--volt-blue)); }
 
         h1 {
-            font-family: 'OMEGLE', sans-serif; font-size: 2.2rem;
-            letter-spacing: 5px; margin: 18px 0 8px;
+            font-family: 'OMEGLE', sans-serif; font-size: 2rem;
+            letter-spacing: 5px; margin: 15px 0 0;
             background: linear-gradient(180deg, #fff 0%, #a2e9ff 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
         .menu-grid {
-            width: 88%; max-width: 380px;
-            display: flex; flex-direction: column; gap: 18px; margin-bottom: 45px;
+            width: 90%; max-width: 400px;
+            display: flex; flex-direction: column; gap: 15px; margin-bottom: 40px;
         }
 
         .menu-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 14px;
-            padding: 18px 20px;
+            border-radius: 16px;
+            padding: 15px 18px;
             display: flex; align-items: center; justify-content: space-between;
             backdrop-filter: blur(15px);
             animation: fadeInUp 0.8s ease-out backwards;
-            color: white;
         }
 
-        .card-info strong { 
-            font-family: 'OMEGLE', sans-serif; 
-            font-size: 1.05rem; 
-            font-weight: normal; 
-            display: block; 
-            margin-bottom: 2px;
-        }
-        
-        .card-info small { 
-            font-family: 'Segoe UI', sans-serif; 
-            font-weight: 300; 
-            font-size: 0.75rem; 
-            color: #94a3b8; 
-        }
+        .card-info strong { font-family: 'OMEGLE', sans-serif; font-size: 1rem; font-weight: normal; display: block; margin-bottom: 2px; }
+        .card-info small { font-family: 'Segoe UI', sans-serif; font-weight: 300; font-size: 0.7rem; color: #94a3b8; }
 
-        .actions { display: flex; gap: 12px; align-items: center; }
+        /* الأزرار التفاعلية */
+        .actions { display: flex; gap: 12px; }
+
+        .btn-group { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; }
 
         .action-btn {
-            color: var(--volt-blue); font-size: 1.1rem;
-            width: 42px; height: 42px;
+            color: var(--volt-blue); font-size: 1rem;
+            width: 38px; height: 38px;
             display: flex; align-items: center; justify-content: center;
-            border-radius: 12px; background: rgba(0, 210, 255, 0.06);
+            border-radius: 10px; background: rgba(0, 210, 255, 0.05);
             border: 1px solid rgba(0, 210, 255, 0.15);
-            transition: all 0.3s ease; text-decoration: none;
+            transition: all 0.3s ease;
         }
 
-        .action-btn:active {
+        .btn-label { font-size: 0.6rem; color: #94a3b8; font-family: 'Segoe UI', sans-serif; }
+
+        .btn-group:active .action-btn {
             background: var(--volt-blue); color: var(--volt-dark);
             box-shadow: 0 0 15px var(--volt-blue);
             transform: scale(0.9);
         }
 
-        .coming-soon { opacity: 0.5; border-style: dashed; }
+        .coming-soon { opacity: 0.4; border-style: dashed; }
 
         /* تصحيح السوشيال ميديا */
         .social-container {
-            display: flex;
-            gap: 35px;
-            justify-content: center;
-            margin-bottom: 40px;
+            display: flex; gap: 35px; justify-content: center; margin-bottom: 35px;
             animation: fadeInUp 0.8s ease-out 0.6s backwards;
         }
 
         .social-link {
-            text-decoration: none;
-            color: #cbd5e1;
-            font-size: 0.75rem;
-            font-weight: 300;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
+            text-decoration: none; color: #cbd5e1; font-size: 0.7rem;
+            display: flex; flex-direction: column; align-items: center; gap: 6px;
         }
 
         .social-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(0, 210, 255, 0.15);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.4rem;
-            transition: 0.3s;
-            color: white;
+            width: 48px; height: 48px; border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(0, 210, 255, 0.15);
+            display: flex; justify-content: center; align-items: center;
+            font-size: 1.3rem; transition: 0.3s; color: white;
         }
 
-        .social-link:active .social-icon {
-            border-color: var(--volt-blue);
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
-            transform: translateY(-3px);
-        }
+        .social-link:active .social-icon { border-color: var(--volt-blue); transform: translateY(-3px); }
 
-        .footer { 
-            margin-top: auto; 
-            text-align: center; 
-            color: #475569; 
-            font-family: 'OMEGLE', sans-serif; 
-            font-size: 0.8rem; 
-            padding-bottom: 20px;
-        }
-        
-        .footer a { color: var(--volt-blue); text-decoration: none; opacity: 0.8; }
+        .footer { text-align: center; color: #475569; font-family: 'OMEGLE', sans-serif; font-size: 0.75rem; padding-bottom: 20px; }
+        .footer a { color: var(--volt-blue); text-decoration: none; }
 
         @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -185,26 +149,43 @@
                     <small>Baltim Resort Branch</small>
                 </div>
                 <div class="actions">
-                    <a href="https://maps.app.goo.gl/2qN1ZbK3bHqr9ZYX9" target="_blank" class="action-btn" title="الموقع على الخريطة">
-                        <i class="fas fa-location-dot"></i>
+                    <a href="https://maps.app.goo.gl/2qN1ZbK3bHqr9ZYX9" target="_blank" class="btn-group">
+                        <div class="action-btn"><i class="fas fa-location-dot"></i></div>
+                        <span class="btn-label">الموقع</span>
                     </a>
-                    <a href="https://volt.tiiny.site/MU.png" target="_blank" class="action-btn" title="عرض المنيو">
-                        <i class="fas fa-utensils"></i>
+                    <a href="https://volt.tiiny.site/MU.png" target="_blank" class="btn-group">
+                        <div class="action-btn"><i class="fas fa-utensils"></i></div>
+                        <span class="btn-label">المنيو</span>
                     </a>
                 </div>
             </div>
             
             <div class="menu-card" style="animation-delay: 0.4s;">
                 <div class="card-info">
-                    <strong>فرع نادي ماتريكس - كفر الشيخ</strong>
+                    <strong>فرع نادي ماتريكس</strong>
                     <small>Kafr El Sheikh Branch</small>
                 </div>
                 <div class="actions">
-                    <a href="#" target="_blank" class="action-btn" title="الموقع على الخريطة">
-                        <i class="fas fa-location-dot"></i>
+                    <a href="#" target="_blank" class="btn-group">
+                        <div class="action-btn"><i class="fas fa-location-dot"></i></div>
+                        <span class="btn-label">الموقع</span>
                     </a>
-                    <a href="https://volt-eg.github.io/M/MU-KFS.png" target="_blank" class="action-btn" title="عرض المنيو">
-                        <i class="fas fa-utensils"></i>
+                    <a href="https://volt-eg.github.io/M/MU-KFS.png" target="_blank" class="btn-group">
+                        <div class="action-btn"><i class="fas fa-utensils"></i></div>
+                        <span class="btn-label">المنيو</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="menu-card" style="animation-delay: 0.5s; background: rgba(0, 210, 255, 0.02);">
+                <div class="card-info">
+                    <strong>معلومات إضافية</strong>
+                    <small>Info & Working Hours</small>
+                </div>
+                <div class="actions">
+                    <a href="#" class="btn-group">
+                        <div class="action-btn" style="border-color: #ffffff44; color: white;"><i class="fas fa-circle-info"></i></div>
+                        <span class="btn-label">قريباً</span>
                     </a>
                 </div>
             </div>
@@ -212,11 +193,9 @@
             <div class="menu-card coming-soon" style="animation-delay: 0.6s;">
                 <div class="card-info">
                     <strong>فرع جديد</strong>
-                    <small>قريباً .. Coming Soon</small>
+                    <small>Coming Soon ..</small>
                 </div>
-                <div style="color: #475569; font-size: 1.2rem; margin-left: 10px;">
-                    <i class="fas fa-hourglass-half"></i>
-                </div>
+                <div style="color: #475569; padding-left: 10px;"><i class="fas fa-hourglass-half"></i></div>
             </div>
         </div>
 
