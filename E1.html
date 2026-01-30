@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Volt Café | Cinematic Slow Lightning</title>
+    <link rel="icon" type="image/png" href="https://volt-eg.github.io/N/logo.png">
+    <style>
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #001f22 0%, #000 85%);
+            overflow: hidden; display: flex; justify-content: center; align-items: center;
+            cursor: none;
+        }
+
+        #canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+
+        .logo-wrapper { position: relative; z-index: 10; display: flex; justify-content: center; align-items: center; }
+
+        /* الهالة الخلفية */
+        .aura {
+            position: absolute; width: 350px; height: 350px;
+            background: rgba(0, 229, 255, 0.2);
+            filter: blur(100px); border-radius: 50%;
+            animation: auraNormal 4s infinite alternate ease-in-out;
+        }
+
+        .volt-logo {
+            width: 30vw; max-width: 450px;
+            filter: drop-shadow(0 0 20px #00e5ff);
+            user-select: none;
+        }
+
+        /* النبض الطبيعي (4 ثواني) */
+        .breathe { animation: breathe 4s infinite ease-in-out; }
+
+        /* رعشة الشحن السريعة */
+        .charging-shake { animation: vibrate 0.1s infinite; }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px #00e5ff) brightness(1); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 50px #00e5ff) brightness(1.2); }
+        }
+
+        @keyframes vibrate {
+            0% { transform: translate(1px, 1px); }
+            50% { transform: translate(-1px, -1px); }
+            100% { transform: translate(1px, -1px); }
+        }
+
+        @keyframes auraNormal {
+            from { transform: scale(1); opacity: 0.3; }
+            to { transform: scale(1.6); opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas"></canvas>
+
+    <div class="logo-wrapper" id="wrapper">
+        <div class="aura"></div>
+        <img src="https://volt-eg.github.io/N/logo.png" class="volt-logo breathe" id="volt-img" alt="Volt Logo">
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const voltImg = document.getElementById('volt-img');
+        let width, height, lightnings = [], sparks = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        // شرارات تتحرك في كل الاتجاهات بسرعات طبيعية
+        class Spark {
+            constructor() { this.init(); }
+            init() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.size = Math.random() * 2 + 0.5;
+                this.vx = (Math.random() - 0.5) * 1.5; 
+                this.vy = (Math.random() - 0.5) * 1.5;
+                this.alpha = Math.random();
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.alpha -= 0.003;
+                if (this.alpha <= 0 || this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
+                    this.init();
+                }
+            }
+            draw() {
+                ctx.fillStyle = `rgba(0, 229, 255, ${this.alpha})`;
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
+            }
+        }
+
+        // البرق البطيء (Long Exposure)
+        class Lightning {
+            constructor(tx, ty, sx, sy) {
+                this.segments = [];
+                this.alpha = 1.0;
+                this.fadeSpeed = 0.008; // تلاشي بطيء جداً ليظل البرق مرسوماً لفترة
+                this.width = Math.random() * 2 + 0.5;
+                this.createPath(sx, sy, tx, ty);
+            }
+            createPath(x1, y1, x2, y2) {
+                let curX = x1, curY = y1;
+                let parts = 15;
+                for (let i = 0; i < parts; i++) {
+                    let nextX = curX + (x2 - curX) / (parts - i) + (Math.random() - 0.5) * 80;
+                    let nextY = curY + (y2 - curY) / (parts - i) + (Math.random() - 0.5) * 80;
+                    this.segments.push({x1: curX, y1: curY, x2: nextX, y2: nextY});
+                    curX = nextX; curY = nextY;
+                }
+            }
+            draw() {
+                ctx.save();
+                ctx.strokeStyle = `rgba(180, 250, 255, ${this.alpha})`;
+                ctx.lineWidth = this.width;
+                ctx.shadowBlur = 30; ctx.shadowColor = "#00e5ff";
+                ctx.beginPath();
+                this.segments.forEach(s => { ctx.moveTo(s.x1, s.y1); ctx.lineTo(s.x2, s.y2); });
+                ctx.stroke(); ctx.restore();
+            }
+            update() { this.alpha -= this.fadeSpeed; }
+        }
+
+        for (let i = 0; i < 80; i++) sparks.push(new Spark());
+
+        async function startScenario() {
+            // 1. هدوء (نبض طبيعي)
+            await new Promise(r => setTimeout(r, 8000 + Math.random() * 4000));
+
+            // 2. صواعق شحن تضرب اللوجو (بطيئة الظهور)
+            for(let i=0; i<3; i++) {
+                let side = Math.floor(Math.random()*4);
+                let sx = side%2==0 ? (side==0?0:width) : Math.random()*width;
+                let sy = side%2!=0 ? (side==1?0:height) : Math.random()*height;
+                lightnings.push(new Lightning(width/2, height/2, sx, sy));
+                await new Promise(r => setTimeout(r, 1000)); // وقت بين كل صاعقة شحن
+            }
+
+            // 3. مرحلة الشحن (رعشة سريعة)
+            voltImg.classList.remove('breathe');
+            voltImg.classList.add('charging-shake');
+            voltImg.style.filter = "drop-shadow(0 0 50px #00e5ff) brightness(1.5)";
+            await new Promise(r => setTimeout(r, 2000));
+
+            // 4. التفريغ الانفجاري (بطيء التلاشي)
+            voltImg.classList.remove('charging-shake');
+            for(let i=0; i<8; i++) {
+                let angle = Math.random() * Math.PI * 2;
+                let tx = width/2 + Math.cos(angle) * (width/2);
+                let ty = height/2 + Math.sin(angle) * (height/2);
+                lightnings.push(new Lightning(tx, ty, width/2, height/2));
+            }
+            
+            ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
+            ctx.fillRect(0,0,width,height);
+            
+            voltImg.classList.add('breathe');
+            voltImg.style.filter = "drop-shadow(0 0 20px #00e5ff) brightness(1)";
+
+            // تكرار الدورة
+            startScenario();
+        }
+
+        function loop() {
+            // مسح خفيف جداً للحفاظ على أثر البرق الضوئي (Light Trails)
+            ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+            ctx.fillRect(0, 0, width, height);
+
+            sparks.forEach(s => { s.update(); s.draw(); });
+            lightnings.forEach((l, i) => {
+                l.update(); l.draw();
+                if(l.alpha <= 0) lightnings.splice(i, 1);
+            });
+
+            requestAnimationFrame(loop);
+        }
+
+        loop();
+        startScenario();
+    </script>
+</body>
+</html>
