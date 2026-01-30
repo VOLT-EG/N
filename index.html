@@ -22,16 +22,37 @@
             --card-border: rgba(0, 210, 255, 0.12);
         }
 
+        /* --- لمسات الاحترافية (Professional UI Fixes) --- */
+        * {
+            /* إلغاء الوميض الرمادي عند اللمس في الموبايل */
+            -webkit-tap-highlight-color: transparent;
+            /* منع تحديد النصوص باللون الأزرق */
+            -webkit-user-select: none;
+            user-select: none;
+            box-sizing: border-box;
+        }
+
+        /* السماح بتحديد النصوص في العناوين فقط إذا أراد العميل نسخها */
+        h1, strong { user-select: text; -webkit-user-select: text; }
+
+        img {
+            /* منع سحب الصور أو حفظها بالضغطة الطويلة */
+            -webkit-user-drag: none;
+            pointer-events: none;
+        }
+
         body {
             margin: 0; padding: 0;
             background-color: var(--volt-dark);
             background: radial-gradient(circle at 50% -10%, #1e293b 0%, #020617 85%);
             color: #ffffff;
-            font-family: 'OMEGLE', 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
             display: flex; flex-direction: column; align-items: center;
             min-height: 100vh; box-sizing: border-box; padding: 40px 0;
             overflow-x: hidden; position: relative;
             -webkit-font-smoothing: antialiased;
+            /* منع الاسكرول الجانبي المهزوز */
+            touch-action: pan-y;
         }
 
         #spark-canvas {
@@ -78,32 +99,40 @@
             display: flex; align-items: center; justify-content: space-between;
             backdrop-filter: blur(15px);
             animation: fadeInUp 0.8s ease-out backwards;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* تأثير خفيف عند تمرير الماوس/اللمس */
+        .menu-card:active {
+            transform: scale(0.98);
+            border-color: rgba(0, 210, 255, 0.4);
         }
 
         .card-info strong { font-family: 'OMEGLE', sans-serif; font-size: 1rem; font-weight: normal; display: block; margin-bottom: 2px; }
         .card-info small { font-family: 'Segoe UI', sans-serif; font-weight: 300; font-size: 0.7rem; color: #94a3b8; }
 
         .actions { display: flex; gap: 12px; }
-        .btn-group { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; }
+        .btn-group { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; cursor: pointer; }
 
         .action-btn {
             color: var(--volt-blue); font-size: 1rem;
-            width: 38px; height: 38px;
+            width: 42px; height: 42px; /* تكبير بسيط لسهولة اللمس */
             display: flex; align-items: center; justify-content: center;
-            border-radius: 10px; background: rgba(0, 210, 255, 0.04);
-            border: 1px solid rgba(0, 210, 255, 0.12);
-            transition: all 0.3s ease;
+            border-radius: 12px; background: rgba(0, 210, 255, 0.06);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .btn-label { font-size: 0.6rem; color: #94a3b8; font-family: 'Segoe UI', sans-serif; }
+        .btn-label { font-size: 0.65rem; color: #94a3b8; font-family: 'Segoe UI', sans-serif; }
 
+        /* تأثير الضغط الاحترافي */
         .btn-group:active .action-btn {
             background: var(--volt-blue); color: var(--volt-dark);
-            box-shadow: 0 0 15px var(--volt-blue);
-            transform: scale(0.9);
+            box-shadow: 0 0 20px var(--volt-blue);
+            transform: scale(0.85);
         }
 
-        .coming-soon { opacity: 0.3; border-style: dashed; }
+        .coming-soon { opacity: 0.4; border-style: dashed; cursor: default; }
 
         .social-container {
             display: flex; gap: 30px; justify-content: center; margin-bottom: 40px;
@@ -116,14 +145,20 @@
         }
 
         .social-icon {
-            width: 48px; height: 48px; border-radius: 14px;
+            width: 52px; height: 52px; border-radius: 16px;
             background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 210, 255, 0.15);
             display: flex; justify-content: center; align-items: center;
-            font-size: 1.3rem; transition: 0.3s; color: white;
+            font-size: 1.4rem; transition: 0.3s; color: white;
+        }
+
+        .social-link:active .social-icon {
+            transform: scale(0.9);
+            background: rgba(0, 210, 255, 0.1);
+            border-color: var(--volt-blue);
         }
 
         .footer { text-align: center; color: #475569; font-family: 'OMEGLE', sans-serif; font-size: 0.75rem; padding-bottom: 20px; }
-        .footer a { color: var(--volt-blue); text-decoration: none; }
+        .footer a { color: var(--volt-blue); text-decoration: none; font-weight: bold; }
 
         @keyframes pulseGlow {
             0%, 100% { box-shadow: 0 0 15px rgba(0, 210, 255, 0.3); border-color: rgba(0, 210, 255, 0.4); }
@@ -151,7 +186,7 @@
                     <small>Baltim Resort Branch</small>
                 </div>
                 <div class="actions">
-                    <a href="https://maps.app.goo.gl/2qN1ZbK3bHqr9ZYX9" class="btn-group">
+                    <a href="https://www.google.com/maps/search/?api=1&query=31.595,31.171" class="btn-group">
                         <div class="action-btn"><i class="fas fa-location-dot"></i></div>
                         <span class="btn-label">الموقع</span>
                     </a>
@@ -168,7 +203,7 @@
                     <small>Kafr El Sheikh Branch</small>
                 </div>
                 <div class="actions">
-                    <a href="######" class="btn-group">
+                    <a href="#" class="btn-group">
                         <div class="action-btn"><i class="fas fa-location-dot"></i></div>
                         <span class="btn-label">الموقع</span>
                     </a>
@@ -194,8 +229,9 @@
                 <span>Facebook</span>
             </a>
             
-            <a href="https://volt-eg.github.io/N/E1.html" class="social-link"> <div class="social-icon"><i class="fas fa-info"></i></div>
-                <span>About Volt Café</span>
+            <a href="https://volt-eg.github.io/N/E1.html" class="social-link"> 
+                <div class="social-icon"><i class="fas fa-info"></i></div>
+                <span>About</span>
             </a>
 
             <a href="https://www.instagram.com/voltcafe.eg" class="social-link" target="_blank">
@@ -214,21 +250,46 @@
         const canvas = document.getElementById('spark-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        window.addEventListener('resize', resize); resize();
+
+        function resize() { 
+            canvas.width = window.innerWidth; 
+            canvas.height = window.innerHeight; 
+        }
+        window.addEventListener('resize', resize); 
+        resize();
+
         class Spark {
             constructor() { this.init(); }
             init() {
-                this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 1.1 + 0.2; this.speedX = (Math.random() - 0.5) * 0.3;
-                this.speedY = (Math.random() - 0.5) * 0.3; this.opacity = Math.random();
+                this.x = Math.random() * canvas.width; 
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.1 + 0.2; 
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.speedY = (Math.random() - 0.5) * 0.3; 
+                this.opacity = Math.random();
                 this.fadeSpeed = Math.random() * 0.01 + 0.005;
             }
-            update() { this.x += this.speedX; this.y += this.speedY; this.opacity -= this.fadeSpeed; if (this.opacity <= 0) this.init(); }
-            draw() { ctx.fillStyle = `rgba(0, 210, 255, ${this.opacity})`; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
+            update() { 
+                this.x += this.speedX; 
+                this.y += this.speedY; 
+                this.opacity -= this.fadeSpeed; 
+                if (this.opacity <= 0) this.init(); 
+            }
+            draw() { 
+                ctx.fillStyle = `rgba(0, 210, 255, ${this.opacity})`; 
+                ctx.beginPath(); 
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); 
+                ctx.fill(); 
+            }
         }
+
         for (let i = 0; i < 35; i++) { particles.push(new Spark()); }
-        function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate); }
+
+        function animate() { 
+            ctx.clearRect(0, 0, canvas.width, canvas.height); 
+            particles.forEach(p => { p.update(); p.draw(); }); 
+            requestAnimationFrame(animate); 
+        }
         animate();
     </script>
 </body>
