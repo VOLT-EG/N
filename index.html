@@ -22,22 +22,29 @@
             --card-border: rgba(0, 210, 255, 0.12);
         }
 
-        /* --- لمسات الاحترافية (Professional UI Fixes) --- */
+        /* --- نظام منع التفاعل العشوائي الشامل --- */
         * {
-            /* إلغاء الوميض الرمادي عند اللمس في الموبايل */
+            /* منع الوميض عند اللمس */
             -webkit-tap-highlight-color: transparent;
-            /* منع تحديد النصوص باللون الأزرق */
+            /* منع ظهور قائمة "نسخ/حفظ" عند الضغط المطول */
+            -webkit-touch-callout: none; 
+            /* منع تحديد النصوص نهائياً */
             -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
             user-select: none;
             box-sizing: border-box;
+            outline: none;
         }
 
-        /* السماح بتحديد النصوص في العناوين فقط إذا أراد العميل نسخها */
-        h1, strong { user-select: text; -webkit-user-select: text; }
-
+        /* منع سحب الصور */
         img {
-            /* منع سحب الصور أو حفظها بالضغطة الطويلة */
             -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
             pointer-events: none;
         }
 
@@ -51,8 +58,8 @@
             min-height: 100vh; box-sizing: border-box; padding: 40px 0;
             overflow-x: hidden; position: relative;
             -webkit-font-smoothing: antialiased;
-            /* منع الاسكرول الجانبي المهزوز */
-            touch-action: pan-y;
+            /* منع الاهتزاز والزووم العشوائي */
+            touch-action: manipulation;
         }
 
         #spark-canvas {
@@ -102,7 +109,6 @@
             transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
-        /* تأثير خفيف عند تمرير الماوس/اللمس */
         .menu-card:active {
             transform: scale(0.98);
             border-color: rgba(0, 210, 255, 0.4);
@@ -116,7 +122,7 @@
 
         .action-btn {
             color: var(--volt-blue); font-size: 1rem;
-            width: 42px; height: 42px; /* تكبير بسيط لسهولة اللمس */
+            width: 42px; height: 42px;
             display: flex; align-items: center; justify-content: center;
             border-radius: 12px; background: rgba(0, 210, 255, 0.06);
             border: 1px solid rgba(0, 210, 255, 0.2);
@@ -125,7 +131,6 @@
 
         .btn-label { font-size: 0.65rem; color: #94a3b8; font-family: 'Segoe UI', sans-serif; }
 
-        /* تأثير الضغط الاحترافي */
         .btn-group:active .action-btn {
             background: var(--volt-blue); color: var(--volt-dark);
             box-shadow: 0 0 20px var(--volt-blue);
@@ -169,13 +174,13 @@
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
 
     <canvas id="spark-canvas"></canvas>
 
     <div class="content-wrapper">
         <div class="header">
-            <div class="logo-wrapper"><img src="logo.png" alt="Volt Logo"></div>
+            <div class="logo-wrapper"><img src="logo.png" alt="Volt Logo" draggable="false"></div>
             <h1>VOLT CAFÉ</h1>
         </div>
 
@@ -186,11 +191,11 @@
                     <small>Baltim Resort Branch</small>
                 </div>
                 <div class="actions">
-                    <a href="https://www.google.com/maps/search/?api=1&query=31.595,31.171" class="btn-group">
+                    <a href="https://www.google.com/maps/search/?api=1&query=31.595,31.171" class="btn-group" draggable="false">
                         <div class="action-btn"><i class="fas fa-location-dot"></i></div>
                         <span class="btn-label">الموقع</span>
                     </a>
-                    <a href="https://volt-eg.github.io/R/" class="btn-group">
+                    <a href="https://volt-eg.github.io/R/" class="btn-group" draggable="false">
                         <div class="action-btn"><i class="fas fa-utensils"></i></div>
                         <span class="btn-label">المنيو</span>
                     </a>
@@ -203,11 +208,11 @@
                     <small>Kafr El Sheikh Branch</small>
                 </div>
                 <div class="actions">
-                    <a href="#" class="btn-group">
+                    <a href="#" class="btn-group" draggable="false">
                         <div class="action-btn"><i class="fas fa-location-dot"></i></div>
                         <span class="btn-label">الموقع</span>
                     </a>
-                    <a href="https://volt-eg.github.io/K/" class="btn-group">
+                    <a href="https://volt-eg.github.io/K/" class="btn-group" draggable="false">
                         <div class="action-btn"><i class="fas fa-utensils"></i></div>
                         <span class="btn-label">المنيو</span>
                     </a>
@@ -224,17 +229,17 @@
         </div>
 
         <div class="social-container">
-            <a href="https://www.facebook.com/VoltCafe.eg" class="social-link" target="_blank">
+            <a href="https://www.facebook.com/VoltCafe.eg" class="social-link" target="_blank" draggable="false">
                 <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
                 <span>Facebook</span>
             </a>
             
-            <a href="https://volt-eg.github.io/N/E1.html" class="social-link"> 
+            <a href="https://volt-eg.github.io/N/E1.html" class="social-link" draggable="false"> 
                 <div class="social-icon"><i class="fas fa-info"></i></div>
                 <span>About</span>
             </a>
 
-            <a href="https://www.instagram.com/voltcafe.eg" class="social-link" target="_blank">
+            <a href="https://www.instagram.com/voltcafe.eg" class="social-link" target="_blank" draggable="false">
                 <div class="social-icon"><i class="fab fa-instagram"></i></div>
                 <span>Instagram</span>
             </a>
@@ -242,7 +247,7 @@
 
         <div class="footer">
             <div>VOLT CAFE © 2023</div>
-            <div style="margin-top: 5px;">BY <a href="https://www.instagram.com/moyehiia" target="_blank">MOYEHIIA</a></div>
+            <div style="margin-top: 5px;">BY <a href="https://www.instagram.com/moyehiia" target="_blank" draggable="false">MOYEHIIA</a></div>
         </div>
     </div>
 
